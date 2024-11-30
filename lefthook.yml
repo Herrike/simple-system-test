@@ -2,22 +2,18 @@
 pre-commit:
   parallel: true
   commands:
-    lint:
-      glob: '*.{js,ts,jsx,tsx}' # glob filter for list of files
-      run: pnpm run lint
-    format:
-      run: pnpm run format 
-    types:
-      glob: '*.{js,ts, jsx, tsx}'
+    eslint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: pnpm lint --fix {staged_files} --quiet
+    prettier:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: pnpm dlx prettier {staged_files} --write
+    typecheck:
+      glob: '*.{ts,tsx}'
       run: pnpm run typecheck
 pre-push:
   parallel: true
   commands:
     unit-tests:
       tags: vitest
-      run: pnpm test
-commit-msg:
-  parallel: true
-  scripts:
-    "commitlint.sh":
-      runner: bash
+      run: pnpm test:vitest
