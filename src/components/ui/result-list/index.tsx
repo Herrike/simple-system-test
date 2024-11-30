@@ -1,14 +1,23 @@
 import { FC } from "react";
-import { type User, type Repo } from "../../../types/globals";
+import { type User } from "../../../types/globals.d";
+import Accordion from "../accordion";
 
 type ResultListProps = {
   users: User[];
-  usersRepos: Repo[];
 };
-const ResultList: FC<ResultListProps> = ({ users, usersRepos }) => {
-  console.log(users);
-  console.log(usersRepos);
-  return <div>ResultList</div>;
+const ResultList: FC<ResultListProps> = ({ users }) => {
+  console.log("user repo");
+  return (
+    <div>
+      {users.map((user, index) => {
+        const panelName = `panel${index}`;
+        const userName = user.login;
+        return (
+          <Accordion panelName={panelName} userName={userName}></Accordion>
+        );
+      })}
+    </div>
+  );
 };
 
 export default ResultList;

@@ -1,8 +1,8 @@
 import TextFieldMUI, { TextFieldProps } from "@mui/material/TextField";
-import { type FC } from "react";
+import { forwardRef } from "react";
 
-const SearchInput: FC<TextFieldProps> = (props) => {
-  return <TextFieldMUI {...props} />;
-};
+const SearchInput = forwardRef<HTMLDivElement, TextFieldProps>((props, ref) => {
+  return <TextFieldMUI ref={ref} {...props} />;
+});
 
 export default SearchInput;

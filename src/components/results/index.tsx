@@ -1,35 +1,37 @@
 import { type FC } from "react";
 import { useUsers } from "../../api/get-github-users";
 import ResultList from "../ui/result-list";
+import { useUsersAtom } from "../../store/atoms/users-atom";
+import { useQuerySearchAtom } from "../../store/atoms/query-search-atom";
 
-type ResultsProps = {
-  querySearch: string;
-};
-const Results: FC<ResultsProps> = ({ querySearch = "" }) => {
-  const results = useUsers();
+const Results: FC = () => {
+  const [querySearch] = useQuerySearchAtom();
+  const [users, setUsers] = useUsersAtom();
+  const userResults = useUsers(querySearch);
 
-  if (!querySearch) {
+  if (
+    userResults &&
+    Array.isArray(userResults?.data) &&
+    !!userResults?.data.length
+  ) {
+    setUsers(userResults.data);
+  }
+
+  if (!querySearch || !users) {
     return <></>;
   }
 
-  if (results?.isLoading) {
-    return <p data-testid="results-loading">Loading results</p>;
-  }
-
-  if (results?.error) {
+  if (userResults?.error) {
     return <p data-testid="results-error">An error occurred</p>;
   }
+  console.log("result users:", users);
 
   return (
     <>
       <div data-testid="results-data">
-        <p>
-          <strong>{querySearch}</strong>
-        </p>
+        <p>Showing users for "{querySearch}"</p>
       </div>
-      <div>
-        <ResultList users={[]} usersRepos={[]} />
-      </div>
+      {users && !!users.length && <ResultList users={users} />}
     </>
   );
 };

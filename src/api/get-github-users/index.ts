@@ -14,21 +14,29 @@ const getGitHubUsers = async (querySearch: string) => {
     console.error("Failed to fetch");
   }
 
-  return {
-    data: res.data.items as User[],
-    error: undefined,
-  };
+  return res;
 };
 
 export const useUsers = (querySearch: string = "") => {
-  const { data, isLoading } = useSWR(querySearch, getGitHubUsers);
+  const { data, error, isLoading } = useSWR(querySearch, getGitHubUsers);
 
   if (!querySearch) {
     console.error("missing query search");
     return;
   }
+  if (error) {
+    return {
+      data: undefined,
+      error: new Error(error),
+      isLoading,
+    };
+  }
 
-  console.log(data);
+  const results = data?.data.items as User[];
 
-  return { ...data, isLoading };
+  return {
+    data: results,
+    error,
+    isLoading,
+  };
 };

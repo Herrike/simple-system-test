@@ -3,7 +3,7 @@
 export type User = {
   [key: string]: unknown;
   id: number | string;
-  name: string;
+  login: string;
 };
 
 export type Repo = {
