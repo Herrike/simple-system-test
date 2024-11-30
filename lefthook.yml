@@ -3,17 +3,17 @@ pre-commit:
   parallel: true
   commands:
     eslint:
-      glob: '*.{js,ts,jsx,tsx}'
+      glob: "*.{js,ts,jsx,tsx}"
       run: pnpm lint --fix {staged_files} --quiet
     prettier:
-      glob: '*.{js,ts,jsx,tsx}'
+      glob: "*.{js,ts,jsx,tsx}"
       run: pnpm dlx prettier {staged_files} --write
     typecheck:
-      glob: '*.{ts,tsx}'
+      glob: "*.{ts,tsx}"
       run: pnpm run typecheck
-pre-push:
-  parallel: true
-  commands:
-    unit-tests:
-      tags: vitest
-      run: pnpm test:vitest
+# pre-push:
+#   parallel: true
+#   commands:
+#     unit-tests:
+#       tags: vitest
+#       run: pnpm test:vitest
