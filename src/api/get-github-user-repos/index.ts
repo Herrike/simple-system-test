@@ -2,7 +2,7 @@ import useSWR from "swr";
 import octokit from "../octokit-config";
 import { Repo } from "../../types/globals.d";
 
-const getGitHubUserRepos = async (username: string, limit = 5) => {
+const getGitHubUserRepos = async (username: string, limit = 100) => {
   const res = await octokit.request(`GET /users/${username}/repos`, {
     username,
     per_page: limit,

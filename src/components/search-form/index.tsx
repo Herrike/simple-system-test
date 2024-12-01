@@ -22,6 +22,7 @@ const SearchForm: FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <SearchInput
+        data-testid="query-search"
         ref={searchInputRef}
         variant="outlined"
         placeholder="Enter username"
@@ -31,7 +32,12 @@ const SearchForm: FC = () => {
           marginBottom: "1rem",
         }}
       />
-      <SearchButton variant="contained" fullWidth type="submit" />
+      <SearchButton
+        data-testid="search-submit-btn"
+        variant="contained"
+        fullWidth
+        type="submit"
+      />
     </form>
   );
 };

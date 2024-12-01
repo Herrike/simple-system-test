@@ -40,19 +40,36 @@ const UserRepoResults: FC<UserRepoResultsProps> = ({ userName }) => {
               sx={{
                 width: "100%",
                 position: "relative",
-                marginTop: "0.5rem",
+                margin: "0.5rem 0 0.4rem 0",
                 padding: "0.5rem 0.75rem",
                 paddingRight: "0",
                 backgroundColor: "var(--grey-300)",
                 boxSizing: "border-box",
               }}
             >
-              {userName} has no public repositories
+              <Typography
+                variant="body2"
+                sx={{
+                  fontSize: "0.75rem",
+                  textAlign: "left",
+                  overflowWrap: "break-word",
+                }}
+              >
+                {userName} has no public repositories
+              </Typography>
             </Box>
           )}
         </>
       ) : (
-        <Typography variant="body2" data-testid={"no-user-repos"}>
+        <Typography
+          variant="body2"
+          data-testid={"no-user-repos"}
+          sx={{
+            fontSize: "0.75rem",
+            textAlign: "left",
+            overflowWrap: "break-word",
+          }}
+        >
           no public repositories available
         </Typography>
       )}

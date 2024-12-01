@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { vi, describe, test, expect, Mock, afterEach } from "vitest";
-import { useUserRepos } from "./index"; // Adjust path based on your setup
+import { useUserRepos } from "./index";
 import octokit from "../octokit-config";
 
 vi.mock("../octokit-config", () => ({
@@ -43,7 +43,7 @@ describe("useUserRepos Hook", () => {
       "GET /users/gonzotestuser/repos",
       {
         username: "gonzotestuser",
-        per_page: 5,
+        per_page: 100,
         headers: {
           "X-GitHub-Api-Version": "2022-11-28",
         },
@@ -105,7 +105,7 @@ describe("useUserRepos Hook", () => {
       "GET /users/ponyfakeuser/repos",
       {
         username: "ponyfakeuser",
-        per_page: 5, // our default and yet very arbitrary limit
+        per_page: 100, // our default and yet very arbitrary limit
         headers: {
           "X-GitHub-Api-Version": "2022-11-28",
         },
