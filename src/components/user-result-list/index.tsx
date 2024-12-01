@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { type User } from "../../types/globals";
+import { type User } from "../../types/globals.d";
 import UserRepoResults from "../user-repo-results";
 
 type UserResultListProps = {

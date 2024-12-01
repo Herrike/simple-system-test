@@ -6,6 +6,7 @@ export type User = {
   login: string;
 };
 
+// this is a shallow representation of
 export type Repo = {
   [key: string]: unknown;
   id: number | string;

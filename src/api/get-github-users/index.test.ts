@@ -3,8 +3,8 @@ import { vi, expect, describe, afterEach, test } from "vitest";
 import { useUsers } from "../get-github-users";
 import octokit from "../octokit-config";
 
-vi.mock("../octokit-config", () => {
-  const octokit = {
+vi.mock("../octokit-config", () => ({
+  default: {
     request: vi.fn().mockResolvedValue({
       status: 200,
       data: {
@@ -14,12 +14,8 @@ vi.mock("../octokit-config", () => {
         ],
       },
     }),
-  };
-
-  return {
-    default: octokit,
-  };
-});
+  },
+}));
 
 describe("useUsers Hook", () => {
   afterEach(() => {

@@ -5,12 +5,15 @@ import SearchForm from "../search-form";
 
 const Card: FC = () => {
   return (
-    <CardMUI>
-      <CardContentMUI
-        sx={{
-          minHeight: "480px",
-        }}
-      >
+    <CardMUI
+      sx={{
+        minHeight: "480px",
+        width: "260px",
+        borderRadius: "0",
+        boxShadow: "none",
+      }}
+    >
+      <CardContentMUI>
         <SearchForm />
         <UserResults />
       </CardContentMUI>

@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import octokit from "../octokit-config";
-import { User } from "../../types/globals";
+import { User } from "../../types/globals.d";
 
 const getGitHubUsers = async (querySearch: string) => {
   const res = await octokit.request("GET /search/users", {
