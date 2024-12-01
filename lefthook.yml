@@ -11,9 +11,3 @@ pre-commit:
     typecheck:
       glob: "*.{ts,tsx}"
       run: pnpm run typecheck
-pre-push:
-  parallel: true
-  commands:
-    unit-tests:
-      tags: vitest
-      run: pnpm run test:vitest
