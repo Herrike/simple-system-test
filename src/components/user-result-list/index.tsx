@@ -37,6 +37,7 @@ const UserResultList: FC<UserResultListProps> = ({ users }) => {
             }}
           >
             <AccordionSummaryMUI
+              data-testid={panelName}
               sx={{
                 minHeight: "32px",
                 backgroundColor: "var(--grey-100)",

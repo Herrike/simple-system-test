@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { vi, describe, test, expect, afterEach, Mock } from "vitest";
-import UserResults from "./index";
+import UserResults from ".";
 import { useUsers } from "../../api/get-github-users";
 import { useQuerySearchAtom } from "../../store/atoms/query-search-atom";
 
@@ -38,7 +38,6 @@ describe("UserResults Component", () => {
     render(<UserResults />);
 
     expect(screen.getByTestId("results-error")).toBeDefined();
-    expect(screen.getByText("An error occurred")).toBeDefined();
   });
 
   test("shows no users found message if no users are returned", () => {

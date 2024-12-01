@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi, describe, test, expect, Mock, afterEach } from "vitest";
-import SearchForm from "./index";
+import SearchForm from ".";
 import { useQuerySearchAtom } from "../../store/atoms/query-search-atom";
 
 vi.mock("../../store/atoms/query-search-atom", () => ({
