@@ -7,8 +7,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  --bg-color: #E5E5E5;
+
+  --grey-100: #e5e5e5;
+  --grey-200: #f2f2f2;
+  --grey-300: #e0e0e0;
+  --grey-800: #010101;
+  --blue-200: #2c9cdb;
 }
 
 body {
@@ -17,5 +21,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background-color: var(--grey-100);
+  color: var(--grey-800);
 }

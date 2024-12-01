@@ -7,6 +7,7 @@ const SearchButton: FC<ButtonProps> = (props) => {
       {...props}
       sx={{
         textTransform: "capitalize",
+        backgroundColor: "var(--blue-200)",
       }}
     >
       Search

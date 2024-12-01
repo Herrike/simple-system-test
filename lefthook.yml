@@ -16,4 +16,4 @@ pre-push:
   commands:
     unit-tests:
       tags: vitest
-      run: pnpm test:vitest
+      run: pnpm run test:vitest

@@ -25,7 +25,6 @@ export const useUserRepos = (userName: string = "") => {
   });
 
   if (!userName) {
-    console.error("missing username");
     return;
   }
 
