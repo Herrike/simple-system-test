@@ -4,3 +4,20 @@
   padding: 2rem;
   text-align: center;
 }
+
+/* 
+  OVERRIDES of DOOM, sorry MUI
+  definitely not proud of these overrides! 
+  Couldn't find other ways and NO, "!important" is out of question :( 
+*/
+.MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded {
+  min-height: 32px;
+  margin: 0;
+}
+.MuiAccordionSummary-content.Mui-expanded.MuiAccordionSummary-contentGutters {
+  margin: 0;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiAccordion-root.MuiAccordion-rounded.Mui-expanded.MuiAccordion-gutters {
+  margin: 0.25rem 0;
+}

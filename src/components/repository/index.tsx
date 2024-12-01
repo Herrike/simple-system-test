@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Repo } from "../../types/globals.d";
 import { Box } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import { List, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import RepositoryStars from "../repository-stars";
 
 type RepositoryProps = {
   repo: Repo;
@@ -13,50 +13,23 @@ const Repository: FC<RepositoryProps> = ({
   return (
     <Box
       sx={{
-        width: "100%",
+        width: "80%",
         position: "relative",
-        paddingLeft: "0",
+        padding: "0.5rem 0.75rem",
         paddingRight: "0",
-        backgroundColor: "var(--grey-300)",
+        boxSizing: "border-box",
+        marginBottom: "0.5rem",
       }}
     >
-      <List
-        sx={{
-          position: "absolute",
-          top: 0,
-          right: "10px",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-        }}
-      >
-        <ListItemIcon
-          sx={{
-            minWidth: "auto",
-          }}
-        >
-          <ListItemText
-            sx={{
-              fontSize: "0.75rem",
-              margin: 0,
-            }}
-          >
-            {stargazers_count}
-          </ListItemText>
-          <StarIcon
-            sx={{
-              fontSize: "1rem",
-              marginLeft: "0.25rem",
-            }}
-          />
-        </ListItemIcon>
-      </List>
+      <RepositoryStars repoStars={stargazers_count} />
       <Typography
-        variant="body1"
+        variant="body2"
         gutterBottom
         sx={{
+          fontSize: "0.75rem",
           textAlign: "left",
           overflowWrap: "break-word",
+          fontWeight: "bold",
         }}
       >
         {name}
@@ -65,6 +38,7 @@ const Repository: FC<RepositoryProps> = ({
         variant="body2"
         gutterBottom
         sx={{
+          fontSize: "0.75rem",
           textAlign: "left",
           overflowWrap: "break-word",
         }}

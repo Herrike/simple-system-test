@@ -2,7 +2,7 @@ import { type FC } from "react";
 
 import { useUserRepos } from "../../api/get-github-user-repos";
 import UserRepoResultList from "../user-repo-result-list";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 type UserRepoResultsProps = {
   userName: string;
@@ -35,9 +35,20 @@ const UserRepoResults: FC<UserRepoResultsProps> = ({ userName }) => {
           {userRepos.length ? (
             <UserRepoResultList repos={userRepos} />
           ) : (
-            <Typography variant="body2" data-testid={"no-user-repos"}>
+            <Box
+              data-testid={"no-user-repos"}
+              sx={{
+                width: "100%",
+                position: "relative",
+                marginTop: "0.5rem",
+                padding: "0.5rem 0.75rem",
+                paddingRight: "0",
+                backgroundColor: "var(--grey-300)",
+                boxSizing: "border-box",
+              }}
+            >
               {userName} has no public repositories
-            </Typography>
+            </Box>
           )}
         </>
       ) : (

@@ -15,12 +15,21 @@ const UserRepoResultList: FC<UserResultListProps> = ({ repos }) => {
         maxHeight: "180px",
         paddingLeft: 0,
         paddingRight: 0,
-        marginTop: "1rem",
-        marginBottom: "1rem",
+        marginTop: ".5rem",
+        marginBottom: ".25rem",
       }}
     >
       {repos.map((repo) => {
-        return <Repository key={repo.id} repo={repo} />;
+        return (
+          <Box
+            key={repo.id}
+            sx={{
+              backgroundColor: "var(--grey-200)",
+            }}
+          >
+            <Repository repo={repo} />
+          </Box>
+        );
       })}
     </Box>
   );

@@ -29,6 +29,12 @@ const UserResultList: FC<UserResultListProps> = ({ users }) => {
             key={user.id}
             expanded={expanded === panelName}
             onChange={handleChange(panelName)}
+            sx={{
+              boxShadow: "none",
+              border: "none",
+              marginTop: 0,
+              marginBottom: 0,
+            }}
           >
             <AccordionSummaryMUI
               sx={{
