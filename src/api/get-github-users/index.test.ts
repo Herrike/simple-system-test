@@ -1,19 +1,11 @@
 import { renderHook, waitFor } from "@testing-library/react";
-import { vi, expect, describe, afterEach, test } from "vitest";
+import { vi, expect, describe, afterEach, test, Mock } from "vitest";
 import { useUsers } from "../get-github-users";
 import octokit from "../octokit-config";
 
 vi.mock("../octokit-config", () => ({
   default: {
-    request: vi.fn().mockResolvedValue({
-      status: 200,
-      data: {
-        items: [
-          { id: 1, login: "pony" },
-          { id: 2, login: "flux" },
-        ],
-      },
-    }),
+    request: vi.fn(),
   },
 }));
 
@@ -23,6 +15,17 @@ describe("useUsers Hook", () => {
   });
 
   test("should fetch users successfully and return data", async () => {
+    // Define the mock response for this test
+    (octokit.request as unknown as Mock).mockResolvedValue({
+      status: 200,
+      data: {
+        items: [
+          { id: 1, login: "pony" },
+          { id: 2, login: "flux" },
+        ],
+      },
+    });
+
     const querySearch = "testQuery";
     const { result } = renderHook(() => useUsers(querySearch));
 
@@ -34,7 +37,7 @@ describe("useUsers Hook", () => {
     });
 
     // Wait for the data to be fetched
-    await waitFor(() => result?.current?.data);
+    await waitFor(() => expect(result.current?.data).toBeDefined());
 
     // After fetching, expect data to be populated and not loading
     expect(result.current).toEqual(
@@ -70,22 +73,16 @@ describe("useUsers Hook", () => {
   });
 
   test("should handle error scenario", async () => {
-    vi.resetAllMocks();
-    vi.mock("./octokit-config", () => ({
-      octokit: {
-        request: vi.fn().mockRejectedValue({
-          data: undefined,
-          error: new Error("Mocked Error"),
-          isLoading: false,
-        }),
-      },
-    }));
+    // Define the mock rejected response for this test
+    (octokit.request as unknown as Mock).mockRejectedValue(
+      new Error("Mocked API Error"),
+    );
 
     const querySearch = "errorTest";
     const { result } = renderHook(() => useUsers(querySearch));
 
     // Wait for the error to be caught
-    await waitFor(() => result?.current?.error);
+    await waitFor(() => expect(result.current?.error).toBeDefined());
 
     // Expect error to be populated and not loading after error
     expect(result.current).toEqual(
