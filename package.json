@@ -11,13 +11,10 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "test:vitest": "vitest",
-    "test:cypress": ""
+    "test:vitest": "vitest"
   },
   "dependencies": {
     "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5",
-    "@fontsource/roboto": "^5.1.0",
     "@mui/icons-material": "^6.1.9",
     "@mui/material": "^6.1.9",
     "jotai": "^2.10.3",

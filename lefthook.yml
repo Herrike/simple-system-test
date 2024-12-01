@@ -11,12 +11,9 @@ pre-commit:
     typecheck:
       glob: "*.{ts,tsx}"
       run: pnpm run typecheck
-# pre-push:
-#   parallel: true
-#   commands:
-#     unit-tests:
-#       tags: vitest
-#       run: pnpm test:vitest
-#     e2e-tests:
-#       tags: cypress
-#       run: pnpm test:cypress
+pre-push:
+  parallel: true
+  commands:
+    unit-tests:
+      tags: vitest
+      run: pnpm test:vitest
