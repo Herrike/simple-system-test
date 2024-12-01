@@ -18,10 +18,12 @@ const getGitHubUserRepos = async (userName: string, limit = 5) => {
 };
 
 export const useUserRepos = (userName: string = "") => {
-  const { data, error, isLoading } = useSWR(userName, getGitHubUserRepos);
+  const { data, error, isLoading } = useSWR(userName, getGitHubUserRepos, {
+    refreshInterval: 60000,
+  });
 
   if (!userName) {
-    console.error("missing query username");
+    console.error("missing username");
     return;
   }
 

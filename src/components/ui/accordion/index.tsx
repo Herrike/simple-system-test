@@ -6,7 +6,6 @@ import {
   AccordionDetails as AccordionDetailsMUI,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useUserReposAtom } from "../../../store/atoms/users-repos-atom";
 import { useUserRepos } from "../../../api/get-github-user-repos";
 
 type AccordionProps = {
@@ -15,29 +14,16 @@ type AccordionProps = {
 };
 
 const Accordion: FC<AccordionProps> = ({ userName, panelName }) => {
-  const [userRepos, setUserRepos] = useUserReposAtom();
   const userReposResults = useUserRepos(userName);
-
-  if (
-    userReposResults?.data &&
-    Array.isArray(userReposResults?.data) &&
-    !!userReposResults?.data.length
-  ) {
-    console.log("saved users");
-    setUserRepos(userReposResults.data);
-  }
-
-  if (!userName || !userRepos) {
-    return <></>;
-  }
 
   if (userReposResults?.isLoading) {
     return <p data-testid="results-loading">Loading results</p>;
   }
 
-  if (userReposResults?.error) {
+  if (userReposResults?.error instanceof Error) {
     return <p data-testid="results-error">An error occurred</p>;
   }
+  const userRepos = userReposResults?.data;
   console.log("result user repos:", userRepos);
 
   return (

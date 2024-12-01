@@ -1,6 +1,6 @@
 import { type FC } from "react";
 import { Card as CardMUI, CardContent as CardContentMUI } from "@mui/material";
-import Results from "../../results";
+import Results from "../../user-results";
 import SearchForm from "../search-form";
 
 const Card: FC = () => {

@@ -18,12 +18,14 @@ const getGitHubUsers = async (querySearch: string) => {
 };
 
 export const useUsers = (querySearch: string = "") => {
-  const { data, error, isLoading } = useSWR(querySearch, getGitHubUsers);
+  const { data, error, isLoading } = useSWR(querySearch, getGitHubUsers, {
+    refreshInterval: 60000,
+  });
 
   if (!querySearch) {
-    console.error("missing query search");
     return;
   }
+
   if (error) {
     return {
       data: undefined,
