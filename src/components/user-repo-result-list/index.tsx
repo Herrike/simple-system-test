@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { Repo } from "../../types/globals.d";
 import Repository from "../repository";
-import { Container } from "@mui/material";
+import { Box } from "@mui/material";
 
 type UserResultListProps = {
   repos: Repo[];
 };
 const UserRepoResultList: FC<UserResultListProps> = ({ repos }) => {
   return (
-    <Container
+    <Box
       sx={{
         overflowY: "auto",
         overflowX: "hidden",
@@ -22,7 +22,7 @@ const UserRepoResultList: FC<UserResultListProps> = ({ repos }) => {
       {repos.map((repo) => {
         return <Repository key={repo.id} repo={repo} />;
       })}
-    </Container>
+    </Box>
   );
 };
 

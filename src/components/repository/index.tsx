@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Repo } from "../../types/globals.d";
-import Container from "@mui/material/Container";
+import { Box } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { List, ListItemIcon, ListItemText, Typography } from "@mui/material";
 
@@ -11,7 +11,7 @@ const Repository: FC<RepositoryProps> = ({
   repo: { name, description, stargazers_count },
 }) => {
   return (
-    <Container
+    <Box
       sx={{
         width: "100%",
         position: "relative",
@@ -71,7 +71,7 @@ const Repository: FC<RepositoryProps> = ({
       >
         {description ?? "no description"}
       </Typography>
-    </Container>
+    </Box>
   );
 };
 
