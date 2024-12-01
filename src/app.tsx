@@ -1,5 +1,5 @@
 import "./app.css";
-import Card from "./components/ui/card";
+import Card from "./components/card";
 import { createStore, Provider as JotaiProvider } from "jotai";
 
 // Nope, not THAT AppStore, Jotai Store of this app :)

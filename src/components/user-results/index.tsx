@@ -1,10 +1,10 @@
 import { type FC } from "react";
 import { useUsers } from "../../api/get-github-users";
-import ResultList from "../ui/result-list";
+import ResultList from "../user-result-list";
 
 import { useQuerySearchAtom } from "../../store/atoms/query-search-atom";
 
-const Results: FC = () => {
+const UserResults: FC = () => {
   const [querySearch] = useQuerySearchAtom();
   const userResults = useUsers(querySearch);
 
@@ -13,7 +13,7 @@ const Results: FC = () => {
   }
 
   if (userResults?.isLoading) {
-    <p>Loading data</p>;
+    <p>Loading users for "{querySearch}"</p>;
   }
 
   if (userResults?.error instanceof Error) {
@@ -30,10 +30,10 @@ const Results: FC = () => {
       {users && users.length ? (
         <ResultList users={users} />
       ) : (
-        <p>No users found</p>
+        <p data-testid="no-user-found">No user found</p>
       )}
     </>
   );
 };
 
-export default Results;
+export default UserResults;

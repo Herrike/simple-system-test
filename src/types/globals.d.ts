@@ -10,5 +10,6 @@ export type Repo = {
   [key: string]: unknown;
   id: number | string;
   name: string;
-  userId: string;
+  description: string;
+  stargazers_count: number;
 };

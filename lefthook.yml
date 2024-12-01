@@ -17,3 +17,6 @@ pre-commit:
 #     unit-tests:
 #       tags: vitest
 #       run: pnpm test:vitest
+#     e2e-tests:
+#       tags: cypress
+#       run: pnpm test:cypress

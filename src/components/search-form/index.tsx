@@ -1,7 +1,7 @@
 import { FormEventHandler, useRef, type FC } from "react";
 import SearchInput from "../search-input";
 import SearchButton from "../search-button";
-import { useQuerySearchAtom } from "../../../store/atoms/query-search-atom";
+import { useQuerySearchAtom } from "../../store/atoms/query-search-atom";
 
 const SearchForm: FC = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);

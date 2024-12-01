@@ -10,8 +10,9 @@ const getGitHubUsers = async (querySearch: string) => {
       "X-GitHub-Api-Version": "2022-11-28",
     },
   });
+
   if (res.status !== 200) {
-    console.error("Failed to fetch");
+    throw new Error("An error occurred while fetching the data.");
   }
 
   return res;
@@ -19,7 +20,8 @@ const getGitHubUsers = async (querySearch: string) => {
 
 export const useUsers = (querySearch: string = "") => {
   const { data, error, isLoading } = useSWR(querySearch, getGitHubUsers, {
-    refreshInterval: 60000,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
   });
 
   if (!querySearch) {

@@ -1,6 +1,6 @@
 import { type FC } from "react";
 import { Card as CardMUI, CardContent as CardContentMUI } from "@mui/material";
-import Results from "../../user-results";
+import UserResults from "../user-results";
 import SearchForm from "../search-form";
 
 const Card: FC = () => {
@@ -12,7 +12,7 @@ const Card: FC = () => {
         }}
       >
         <SearchForm />
-        <Results />
+        <UserResults />
       </CardContentMUI>
     </CardMUI>
   );

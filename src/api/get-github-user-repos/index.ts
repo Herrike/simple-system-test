@@ -2,16 +2,17 @@ import useSWR from "swr";
 import octokit from "../octokit-config";
 import { Repo } from "../../types/globals";
 
-const getGitHubUserRepos = async (userName: string, limit = 5) => {
-  console.log(userName);
-  const res = await octokit.request(`GET /users/${userName}/repos`, {
+const getGitHubUserRepos = async (username: string, limit = 5) => {
+  const res = await octokit.request(`GET /users/${username}/repos`, {
+    username,
     per_page: limit,
     headers: {
       "X-GitHub-Api-Version": "2022-11-28",
     },
   });
+
   if (res.status !== 200) {
-    console.error("Failed to fetch");
+    throw new Error("An error occurred while fetching the data.");
   }
 
   return res;
@@ -19,7 +20,8 @@ const getGitHubUserRepos = async (userName: string, limit = 5) => {
 
 export const useUserRepos = (userName: string = "") => {
   const { data, error, isLoading } = useSWR(userName, getGitHubUserRepos, {
-    refreshInterval: 60000,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
   });
 
   if (!userName) {
@@ -35,7 +37,9 @@ export const useUserRepos = (userName: string = "") => {
     };
   }
 
-  const results = data?.data.items as Repo[];
+  console.log(">>> data", data);
+
+  const results = data?.data as Repo[];
 
   return {
     data: results,

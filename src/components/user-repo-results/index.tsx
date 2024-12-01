@@ -6,24 +6,25 @@ import {
   AccordionDetails as AccordionDetailsMUI,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useUserRepos } from "../../../api/get-github-user-repos";
+import { useUserRepos } from "../../api/get-github-user-repos";
+import UserRepoResultList from "../user-repo-result-list";
 
-type AccordionProps = {
+type UserRepoResultsProps = {
   panelName: string;
   userName: string;
 };
 
-const Accordion: FC<AccordionProps> = ({ userName, panelName }) => {
-  const userReposResults = useUserRepos(userName);
+const UserRepoResults: FC<UserRepoResultsProps> = ({ userName, panelName }) => {
+  const userRepoResults = useUserRepos(userName);
 
-  if (userReposResults?.isLoading) {
+  if (userRepoResults?.isLoading) {
     return <p data-testid="results-loading">Loading results</p>;
   }
 
-  if (userReposResults?.error instanceof Error) {
+  if (userRepoResults?.error instanceof Error) {
     return <p data-testid="results-error">An error occurred</p>;
   }
-  const userRepos = userReposResults?.data;
+  const userRepos = userRepoResults?.data;
   console.log("result user repos:", userRepos);
 
   return (
@@ -35,9 +36,17 @@ const Accordion: FC<AccordionProps> = ({ userName, panelName }) => {
       >
         {userName}
       </AccordionSummaryMUI>
-      <AccordionDetailsMUI>{userName}'s repos</AccordionDetailsMUI>
+      <AccordionDetailsMUI>
+        {userRepos && userRepos.length ? (
+          <UserRepoResultList repos={userRepos} />
+        ) : (
+          <p data-testid={"no-user-repos"}>
+            {userName} has no public repositories
+          </p>
+        )}
+      </AccordionDetailsMUI>
     </AccordionMUI>
   );
 };
 
-export default Accordion;
+export default UserRepoResults;
