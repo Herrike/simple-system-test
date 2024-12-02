@@ -30,48 +30,32 @@ const UserRepoResults: FC<UserRepoResultsProps> = ({ userName }) => {
 
   return (
     <>
-      {userRepos ? (
-        <>
-          {userRepos.length ? (
-            <UserRepoResultList repos={userRepos} />
-          ) : (
-            <Box
-              data-testid={"no-user-repos"}
-              sx={{
-                width: "100%",
-                position: "relative",
-                margin: "0.5rem 0 0.4rem 0",
-                padding: "0.5rem 0.75rem",
-                paddingRight: "0",
-                backgroundColor: "var(--grey-300)",
-                boxSizing: "border-box",
-              }}
-            >
-              <Typography
-                variant="body2"
-                sx={{
-                  fontSize: "0.75rem",
-                  textAlign: "left",
-                  overflowWrap: "break-word",
-                }}
-              >
-                {userName} has no public repositories
-              </Typography>
-            </Box>
-          )}
-        </>
+      {userRepos && userRepos.length > 0 ? (
+        <UserRepoResultList repos={userRepos} />
       ) : (
-        <Typography
-          variant="body2"
+        <Box
           data-testid={"no-user-repos"}
           sx={{
-            fontSize: "0.75rem",
-            textAlign: "left",
-            overflowWrap: "break-word",
+            width: "100%",
+            position: "relative",
+            margin: "0.5rem 0 0.4rem 0",
+            padding: "0.5rem 0.75rem",
+            paddingRight: "0",
+            backgroundColor: "var(--grey-300)",
+            boxSizing: "border-box",
           }}
         >
-          no public repositories available
-        </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "0.75rem",
+              textAlign: "left",
+              overflowWrap: "break-word",
+            }}
+          >
+            {userName} has no public repositories
+          </Typography>
+        </Box>
       )}
     </>
   );

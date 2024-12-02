@@ -24,3 +24,6 @@ Here’s the tech powering the app:
 - **Octokit:** To talk to the GitHub API.
 - **Lefthook:** Quality check - in this case - script runner.
 - **Vitest** Unit+Integration test suite.
+
+Github repo: https://github.com/Herrike/simple-system-test
+Website: https://simple-system-test-herrike-hendons-projects.vercel.app/

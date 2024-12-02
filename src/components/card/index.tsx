@@ -8,7 +8,7 @@ const Card: FC = () => {
     <CardMUI
       sx={{
         minHeight: "480px",
-        width: "260px",
+        minWidth: "320px",
         borderRadius: "0",
         boxShadow: "none",
       }}

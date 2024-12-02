@@ -8,7 +8,7 @@ type RepositoryProps = {
   repo: Repo;
 };
 const Repository: FC<RepositoryProps> = ({
-  repo: { name, description, stargazers_count },
+  repo: { name, description, stargazers_count, html_url },
 }) => {
   return (
     <Box
@@ -32,7 +32,7 @@ const Repository: FC<RepositoryProps> = ({
           fontWeight: "bold",
         }}
       >
-        {name}
+        <span>{name}</span>
       </Typography>
       <Typography
         variant="body2"
@@ -45,6 +45,20 @@ const Repository: FC<RepositoryProps> = ({
       >
         {description ?? "no description"}
       </Typography>
+      <Box
+        sx={{
+          marginTop: "0.25rem",
+          textAlign: "left",
+          "& > a": {
+            fontSize: "0.6rem",
+            color: "var(--grey-800)",
+            textTransform: "capitalize",
+            fontWeight: "600",
+          },
+        }}
+      >
+        <a href={html_url}>Repo Link</a>
+      </Box>
     </Box>
   );
 };
