@@ -1,1 +1,1 @@
-import "vitest-dom/matchers.js";
+import "@testing-library/jest-dom/vitest";
