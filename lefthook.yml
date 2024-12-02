@@ -15,4 +15,4 @@ pre-push:
   parallel: true
   commands:
     vitest:
-      run: pnpm run test:vitest
+      run: pnpm dlx vitest
