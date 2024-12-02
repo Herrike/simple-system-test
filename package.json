@@ -4,14 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prepare": "lefthook install",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "test:vitest": "vitest"
+    "test:vitest": "vitest",
+    "postinstall": "if [ \"$CI\" != \"true\" ]; then lefthook install; fi"
   },
   "dependencies": {
     "@emotion/react": "^11.13.5",
@@ -21,11 +21,11 @@
     "octokit": "^4.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "swr": "^2.2.5",
-    "lefthook": "^1.8.4"
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
+    "lefthook": "^1.8.4",
     "@octokit/types": "^13.6.2",
     "@testing-library/react": "^16.0.1",
     "@types/node": "^22.10.1",
