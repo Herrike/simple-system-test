@@ -20,6 +20,9 @@ importers:
       jotai:
         specifier: ^2.10.3
         version: 2.10.3(@types/react@18.3.12)(react@18.3.1)
+      lefthook:
+        specifier: ^1.8.4
+        version: 1.8.4
       octokit:
         specifier: ^4.0.2
         version: 4.0.2
@@ -75,9 +78,6 @@ importers:
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
-      lefthook:
-        specifier: ^1.8.4
-        version: 1.8.4
       prettier:
         specifier: ^3.4.1
         version: 3.4.1
