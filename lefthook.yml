@@ -17,4 +17,4 @@ pre-push:
   commands:
     vitest:
       glob: "*.{ts,tsx}"
-      run: vitest related {push_files} --run
+      run: pnpm dlx jsdom && vitest related {all_files} --run
