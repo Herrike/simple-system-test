@@ -15,4 +15,5 @@ pre-push:
   parallel: true
   commands:
     vitest:
-      run: pnpm run test:vitest
+      glob: "*.{ts,tsx}"
+      run: vitest related --run
