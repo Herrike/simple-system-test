@@ -1,50 +1,26 @@
-# React + TypeScript + Vite
+# GitHub User Search App (Simple-System Test)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hey there! 👋
+This is my GitHub User Search app.
+This is a React + TypeScript + SWR project where you can search for GitHub users and check out their repositories.
 
-Currently, two official plugins are available:
+## What Does It Do?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search Users:** Type in a username, and it’ll show you up to 5 matching GitHub users.
+- **View Repos:** Click on a user, and you’ll see all their public repositories (no limits!).
+- **Mobile-Friendly:** Works great on both your desktop and your phone. 📱💻
+- **UI:** Built with Material-UI to make things look polished.
 
-## Expanding the ESLint configuration
+## Built With
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Here’s the tech powering the app:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **React:** For all the reactive UI magic
+- **TypeScript:** To keep things clean and error-free.
+- **Vite:** For a super-fast development experience.
+- **SWR:** Handles data fetching, with caching and revalidation.
+- **Jotai:** Lightweight state management.
+- **Material-UI:** For beautiful components and icons.
+- **Octokit:** To talk to the GitHub API.
+- **Lefthook:** Quality check - in this case - script runner.
+- **Vitest** Unit+Integration test suite.
