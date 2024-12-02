@@ -3,6 +3,7 @@ pre-commit:
   parallel: true
   commands:
     eslint:
+      stage_fixed: true
       glob: "*.{js,ts,jsx,tsx}"
       run: pnpm run lint --fix {staged_files} --quiet
     prettier:
@@ -16,4 +17,4 @@ pre-push:
   commands:
     vitest:
       glob: "*.{ts,tsx}"
-      run: vitest related --run
+      run: vitest related {push_files} --run
