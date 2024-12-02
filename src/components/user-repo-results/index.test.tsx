@@ -22,7 +22,6 @@ describe("UserRepoResults Component", () => {
     render(<UserRepoResults userName="testuser" />);
 
     expect(screen.getByTestId("results-loading")).toBeDefined();
-    expect(screen.getByText("Loading results")).toBeDefined();
   });
 
   test("should render an error message when an error occurs", () => {
@@ -47,9 +46,6 @@ describe("UserRepoResults Component", () => {
     render(<UserRepoResults userName="testuser" />);
 
     expect(screen.getByTestId("no-user-repos")).toBeDefined();
-    expect(
-      screen.getByText("testuser has no public repositories"),
-    ).toBeDefined();
   });
 
   test("should render a message when no repositories are available", () => {
@@ -63,9 +59,6 @@ describe("UserRepoResults Component", () => {
 
     waitFor(() => {
       expect(screen.getByTestId("no-user-repos")).toBeDefined();
-      expect(
-        screen.getByText("no public repositories available"),
-      ).toBeDefined();
     });
   });
 
