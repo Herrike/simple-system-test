@@ -17,4 +17,4 @@ pre-push:
   commands:
     vitest:
       glob: "*.{ts,tsx}"
-      run: pnpm run test:vitest related {all_files} --run
+      run: git pull && pnpm run test:vitest related {all_files} --run
