@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { test, describe, expect } from "vitest";
-import UserResultList from "./index";
+import UserResultList from ".";
 
 // Mock data for users
 const mockUsers = [
