@@ -1,14 +1,59 @@
-import { render, screen } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
-import UserResultList from ".";
-import { type User } from "../../types/globals.d";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { test, describe, expect } from "vitest";
+import UserResultList from "./index";
+
+// Mock data for users
+const mockUsers = [
+  { id: 1, login: "pony" },
+  { id: 2, login: "flux" },
+];
 
 describe("UserResultList Component", () => {
-  test("does not render UserRepoResults for collapsed accordions", () => {
-    const noMockUsers: User[] = [];
-    render(<UserResultList users={noMockUsers} />);
+  test("renders a list of users and toggles accordion panels", () => {
+    // Render the component with mock users
+    render(<UserResultList users={mockUsers} />);
 
-    const userRepoResults = screen.queryByTestId("user-repo-results");
-    expect(userRepoResults).toBeNull();
+    // Check if all usernames are rendered
+    mockUsers.forEach((user) => {
+      expect(screen.getByText(user.login)).toBeDefined();
+    });
+
+    // Select the first accordion panel
+    const firstPanel = screen.getByTestId("panel0-header");
+    expect(firstPanel).toBeDefined();
+
+    // Expand the first panel
+    fireEvent.click(firstPanel);
+
+    waitFor(() => {
+      expect(
+        screen.getByTestId("panel0-content").getAttribute("aria-expanded"),
+      ).toBe("true");
+    });
+
+    // Collapse the first panel
+    fireEvent.click(firstPanel);
+
+    waitFor(() => {
+      expect(
+        screen.getByTestId("panel0-content").getAttribute("aria-expanded"),
+      ).toBe("true");
+      expect(
+        screen.getByTestId("panel1-content").getAttribute("aria-expanded"),
+      ).toBe("false");
+    });
+
+    // Verify that interacting with one panel doesn't affect others
+    const secondPanel = screen.getByTestId("panel1-header");
+    fireEvent.click(secondPanel);
+
+    waitFor(() => {
+      expect(
+        screen.getByTestId("panel1-content").getAttribute("aria-expanded"),
+      ).toBe("true");
+      expect(
+        screen.getByTestId("panel0-content").getAttribute("aria-expanded"),
+      ).toBe("false");
+    });
   });
 });
