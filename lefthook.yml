@@ -2,6 +2,8 @@
 pre-commit:
   parallel: true
   commands:
+    pull-remote-changes:
+      run: git pull
     eslint:
       stage_fixed: true
       glob: "*.{js,ts,jsx,tsx}"
@@ -17,4 +19,4 @@ pre-push:
   commands:
     vitest:
       glob: "*.{ts,tsx}"
-      run: git pull && pnpm run test:vitest related {all_files} --run
+      run: pnpm run test:vitest related {all_files} --run
