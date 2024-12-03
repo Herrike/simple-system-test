@@ -2,8 +2,9 @@ import useSWR from "swr";
 import octokit from "../octokit-config";
 import { Repo } from "../../types/globals.d";
 
-const getGitHubUserRepos = async (username: string, limit = 100) => {
-  const res = await octokit.request(`GET /users/${username}/repos`, {
+const getGitHubUserRepos = async (userRepos: string, limit = 100) => {
+  const username = userRepos.replace("/repos", "");
+  const res = await octokit.request(`GET /users/${userRepos}`, {
     username,
     per_page: limit,
     headers: {
@@ -19,10 +20,14 @@ const getGitHubUserRepos = async (username: string, limit = 100) => {
 };
 
 export const useUserRepos = (userName: string = "") => {
-  const { data, error, isLoading } = useSWR(userName, getGitHubUserRepos, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-  });
+  const { data, error, isLoading } = useSWR(
+    `${userName}/repos`,
+    getGitHubUserRepos,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    },
+  );
 
   if (!userName) {
     return;
