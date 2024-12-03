@@ -25,5 +25,5 @@ Here’s the tech powering the app:
 - **Lefthook:** Quality check - in this case - script runner.
 - **Vitest** Unit+Integration test suite.
 
-Github repo: https://github.com/Herrike/simple-system-test
+## Live Website
 Website: https://simple-system-test-herrike-hendons-projects.vercel.app/
