@@ -9,6 +9,7 @@ const Card: FC = () => {
       sx={{
         minHeight: "480px",
         minWidth: "320px",
+        maxWidth: "480px",
         borderRadius: "0",
         boxShadow: "none",
       }}

@@ -19,7 +19,7 @@ const UserRepoResults: FC<UserRepoResultsProps> = ({ userName }) => {
     );
   }
 
-  if (userRepoResults?.error instanceof Error) {
+  if (userRepoResults?.error) {
     return (
       <Typography variant="body2" data-testid="results-error">
         An error occurred

@@ -24,7 +24,7 @@ const UserResults: FC = () => {
     </Typography>;
   }
 
-  if (userResults?.error instanceof Error) {
+  if (userResults?.error) {
     return (
       <Typography variant="body2" data-testid="results-error">
         An error occurred
